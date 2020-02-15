@@ -1,8 +1,9 @@
 <<<<<<< HEAD
+
 #!/bin/bash
 declare -A  GameBoard[10,10]
 echo "welcome to snake and ladder game"
-=======
+
 
 initializeGameBoard()
 {
@@ -41,9 +42,25 @@ echo ========================================
 done
 }
 
-function InitializePlayerPosition()
+function InitializePlayerPossition()
 {
-currentpositition=0
+currentpossition=0
 return $currentposition
 }
->>>>>>> UseCase_1_{initialize_gameboard}
+=======
+#!/bin/bash/
+
+rollDice(){
+while(( playerPossition<100 ))
+do
+diceNumber=$(( $(( $RANDOM%6 ))+1 ))
+playerPossition=$(( $playerPossition+$diceNumber ))
+done
+
+
+
+
+
+
+>>>>>>> Usecase_2_{Generate_random_number}
+

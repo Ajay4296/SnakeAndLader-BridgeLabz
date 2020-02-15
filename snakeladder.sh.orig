@@ -1,12 +1,7 @@
-
-
-
-#!/bin/bash
 <<<<<<< HEAD
+#!/bin/bash
 declare -A  GameBoard[10,10]
 echo "welcome to snake and ladder game"
-
-
 initializeGameBoard()
 {
 size=100
@@ -50,7 +45,6 @@ currentpossition=0
 return $currentposition
 }
 
-#!/bin/bash/
 
 rollDice(){
 while(( playerPossition<100 ))
@@ -58,7 +52,6 @@ do
 diceNumber=$(( $(( $RANDOM%6 ))+1 ))
 playerPossition=$(( $playerPossition+$diceNumber ))
 done
-=======
 gamestart()
 {
 count=0
@@ -91,14 +84,8 @@ echo "at $count roll playerpossition is $possition"
 done
 done
 echo "player possition at $count th  roll is 100"
->>>>>>> UseCase_4_{runloop_until_user_reach_100}
 
 
-
-
-<<<<<<< HEAD
-
-#!/bin/bash/
 Ladder()
 {
 case $1 in 
@@ -177,5 +164,14 @@ return
 72
 ;;
 }
+
 =======
->>>>>>> UseCase_4_{runloop_until_user_reach_100}
+while [ $possition>100 ]
+do
+echo "at $count roll playerpossition is $possition"
+done
+if(($possition==100))
+then
+echo "it's final possition congratulation you won"
+fi
+>>>>>>> UseCase_5_{to_find_exact_winning_possition}

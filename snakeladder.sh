@@ -1,5 +1,4 @@
-#!/bin/bash
-declare -A  GameBoard[10,10]
+
 initializeGameBoard()
 {
 size=100
@@ -21,8 +20,6 @@ done
 fi
 done
 }
-initializeGameBoard
-
 
 printGameBoard()
 {
@@ -38,5 +35,9 @@ echo ========================================
 
 done
 }
-printGameBoard
-echo player starting possition is 0
+
+function InitializePlayerPosition()
+{
+currentpositition=0
+return $currentposition
+}

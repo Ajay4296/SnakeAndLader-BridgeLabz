@@ -1,3 +1,15 @@
-#!/bin/bash
-declare -A  GameBoard[10,10]
-echo "welcome to snake and ladder game"
+#!/bin/bash/
+
+rollDice(){
+while(( playerPossition<100 ))
+do
+diceNumber=$(( $(( $RANDOM%6 ))+1 ))
+playerPossition=$(( $playerPossition+$diceNumber ))
+done
+
+
+
+
+
+
+

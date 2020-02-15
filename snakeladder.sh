@@ -41,9 +41,9 @@ echo ========================================
 done
 }
 
-function InitializePlayerPosition()
+function InitializePlayerPossition()
 {
-currentpositition=0
+currentpossition=0
 return $currentposition
 }
 

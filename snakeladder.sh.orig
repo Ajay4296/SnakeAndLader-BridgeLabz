@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+
 #!/bin/bash
 declare -A  GameBoard[10,10]
 echo "welcome to snake and ladder game"
@@ -165,7 +166,6 @@ return
 ;;
 }
 
-=======
 while [ $possition>100 ]
 do
 echo "at $count roll playerpossition is $possition"
@@ -174,4 +174,8 @@ if(($possition==100))
 then
 echo "it's final possition congratulation you won"
 fi
->>>>>>> UseCase_5_{to_find_exact_winning_possition}
+
+=======
+echo "number of time dice roll is $count"
+ 
+>>>>>>> UseCase_6_{count_the_dice_roll}

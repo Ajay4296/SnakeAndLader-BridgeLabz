@@ -23,6 +23,7 @@ done
 fi
 done
 }
+initializeGameBoard
 
 printGameBoard()
 {
@@ -35,9 +36,10 @@ printf "| ${GameBoard[$i,$j]}"
 done
 echo "|"
 echo ========================================
-
 done
+
 }
+printGameBoard
 
 function InitializePlayerPossition()
 {
@@ -46,49 +48,16 @@ return $currentposition
 }
 
 
-rollDice(){
-while(( playerPossition<100 ))
-do
-diceNumber=$(( $(( $RANDOM%6 ))+1 ))
-playerPossition=$(( $playerPossition+$diceNumber ))
-done
-gamestart()
+rollDice()
 {
-count=0
-playerPossition
-possition=$?
-while[ $possition -le 99 ]
-do
-rollDice
-number=$?
-count=$(($count+1))
-possition=$(($possition+$number))
-echo "at $count roll playerpossition is $possition"
-Ladder $possition
-ladder1=$?
-if((ladder1>=1))
-then
-possition=$(($possition+$ladder1))
-echo "at $count roll playerpossition is $possition"
-fi
-Snake $possition
-snake1=$?
-if((snake1>=1))
-then
-possition=$(($possition-$snake1))
-echo "at $count roll playerpossition is $possition"
-fi
-while(( $possition>100 ))
-do
-echo "at $count roll playerpossition is $possition"
-done
-done
-echo "player possition at $count th  roll is 100"
+dicenumber=$(( $(( $RANDOM%6 ))+1 ))
+return $dicenumber
+}
 
 
 Ladder()
 {
-case $1 in 
+case $1 in
 2)
 ladder=23
 return $ladder
@@ -128,11 +97,14 @@ return $ladder
 ladder=0
 return $ladder
 ;;
+
+esac
 }
+
 
 Snake()
 {
-case in $?
+case $? in
 27)
 snake=7
 return $snake
@@ -158,19 +130,104 @@ snake=12
 return $snake
 ;;
 
-99)
-snake=26
-return
-72
+*)
+snake=0
+return $snake
 ;;
+
+esac
 }
 
-while [ $possition>100 ]
-do
-echo "at $count roll playerpossition is $possition"
-done
-if(($possition==100))
-then
-echo "it's final possition congratulation you won"
-fi
+playerOne=0
+playerTwo=0
+count1=0
+count2=0
+playGame(){
+	playerChange=1
+	while(( playerOne<100 ))
+	do
+	if(( $playerChange==1 ))
+	then
+		
+		rollDice
+		play1=$?
+		count1=$(( $count1+1 ))
+		echo "$count1 time roll the die to get the $play1"
+		playerOne=$(( $playerOne+$play1 ))
+		 Ladder
+			ladder1=$?
+			if(( $ladder1 >= 1 ))
+			then
+				echo "First player score is $playerOne"
+				playerOne=$(( $playerOne+$ladder1 ))
+				echo "++> with help of ladder hike $ladder1 "
+			fi
+		
+			Snake
+			snake1=$?
+			if(( $snake1 >= 1 ))
+			then
+				echo "First player score is $playerOne"
+				playerOne=$(( $playerOne-$snake1 ))
+				echo "--> with help of snake minus $snake1 the total score "
+			fi
+		if(( $playerOne>100 ))
+		then
+			playerOne=$(( $playerOne-$play1 ))
+			echo "First Player score is $playerOne "
+		else
+			echo "First player score is $playerOne "
+		fi
+	#CheckWinner
+		if(( $playerOne == 100 ))
+		then
+			echo "Win the first player"
+			break
+		fi
+	playerChange=2
+	fi
+	if(( $playerChange==2 ))
+	then
+		
+		rollDice
+		play2=$2
+		count=$((count+1))
+		echo "$count2 time roll the die to get the $play2"
+		playerTwo=$(( $playerTwo+$play2 ))
+		Ladder
+		
+		ladder1=$?
+			if(( $ladder1 >= 1 ))
+			then
+				echo "Second player score is $playerTwo"
+				playerTwo=$(( $playerTwo+$ladder1 ))
+				echo "++> with help of ladder hike $ladder1 "
+			fi
+			Snake
+			snake1=$?
+			if(( $snake1 >= 1 ))
+			then
+				echo "Second player score is $playerTwo"
+				playerTwo=$(( $playerTwo-$snake1 ))
+				echo "--> with help of snake minus $snake1 the total score "
+			fi
+		if(( $playerTwo>100 ))
+		then
+			playerTwo=$(( $playerTwo-$play2 ))
+			echo "Second Player score is $playerTwo "
+		else
+			echo "Second player score is $playerTwo "
+		fi
+	
+		if(( $playerTwo == 100 ))
+		then
+			echo "Win the second player "
+			break
+		fi
+	playerChange=1
+	fi
+	done
+}
+playGame
+
 

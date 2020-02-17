@@ -41,6 +41,7 @@ return $ladder
 ladder=0
 return $ladder
 ;;
+esac
 }
 
 Snake()
@@ -76,4 +77,5 @@ snake=26
 return
 72
 ;;
+esac
 }

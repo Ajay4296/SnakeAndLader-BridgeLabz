@@ -48,7 +48,7 @@ do
 diceNumber=$(( $(( $RANDOM%6 ))+1 ))
 playerPossition=$(( $playerPossition+$diceNumber ))
 done
-
+}
 
 Ladder()
 {
@@ -98,7 +98,7 @@ esac
 
 Snake()
 {
-case in $?
+case $? in
 27)
 snake=7
 return $snake
@@ -132,4 +132,97 @@ return
 
 esac
 }
+
+playerOne=0
+playerTwo=0
+count1=0
+count2=0
+playGame(){
+	playerChange=1
+	while(( playerOne<100 ))
+	do
+	if(( $playerChange==1 ))
+	then
+	
+		play1=$(( $(( $RANDOM%6 ))+1 ))
+		count1=$(( $count1+1 ))
+		echo "$count1 time roll the die to get the $play1"
+		playerOne=$(( $playerOne+$play1 ))
+	
+			Ladder
+			ladder1=$?
+			if(($ladder1>=1))
+			then
+				echo "First player score is $playerOne"
+				playerOne=$(( $playerOne+$ladder1 ))
+				echo "++> with help of ladder hike $ladder1 "
+			fi
+	
+			Snake
+			snake1=$?
+			if(( $snake1 >= 1 ))
+			then
+				echo "First player score is $playerOne"
+				playerOne=$(( $playerOne-$snake1 ))
+				echo "--> with help of snake minus $snake1 the total score "
+			fi
+		if(( $playerOne>100 ))
+		then
+			playerOne=$(( $playerOne-$play1 ))
+			echo "First Player score is $playerOne "
+		else
+			echo "First player score is $playerOne "
+		fi
+	
+		if(( $playerOne == 100 ))
+		then
+			echo "first player has won
+"
+			break
+		fi
+	playerChange=2
+	fi
+	if(( $playerChange==2 ))
+	then
+	
+		play2=$(( $(( $RANDOM%6 ))+1 ))
+		count2=$(( $count2+1 ))
+		echo "$count2 time roll the die to get the $play2"
+		playerTwo=$(( $playerTwo+$play2 ))
+			Ladder
+			ladder1=$?
+			if(( $ladder1 >= 1 ))
+			then
+				echo "Second player score is $playerTwo"
+				playerTwo=$(( $playerTwo+$ladder1 ))
+				echo "++> with help of ladder hike $ladder1 "
+			fi
+			Snake
+			snake1=$?
+			if(( $snake1 >= 1 ))
+			then
+				echo "Second player score is $playerTwo"
+				playerTwo=$(( $playerTwo-$snake1 ))
+				echo "--> with help of snake minus $snake1 the total score "
+			fi
+		if(( $playerTwo>100 ))
+		then
+			playerTwo=$(( $playerTwo-$play2 ))
+			echo "Second Player score is $playerTwo "
+		else
+			echo "Second player score is $playerTwo "
+		fi
+	
+		if(( $playerTwo == 100 ))
+		then
+			echo "second player has won "
+			break
+		fi
+	playerChange=1
+	fi
+	done
+}
+playGame
+echo "total number of dice rolled by playerone is $count1"
+echo "total number of dice rolled by playertwo is $count2"
 

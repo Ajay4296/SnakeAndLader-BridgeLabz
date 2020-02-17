@@ -6,6 +6,7 @@ do
 diceNumber=$(( $(( $RANDOM%6 ))+1 ))
 playerPossition=$(( $playerPossition+$diceNumber ))
 done
+}
 
 
 

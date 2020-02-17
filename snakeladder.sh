@@ -27,6 +27,8 @@ echo "at $count roll playerpossition is $possition"
 fi
 while(( $possition>100 ))
 do
+possition=$(($possition-$number))
+
 echo "at $count roll playerpossition is $possition"
 done
 done

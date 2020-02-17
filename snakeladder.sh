@@ -50,3 +50,47 @@ playerPossition=$(( $playerPossition+$diceNumber ))
 done
 
 
+Ladder()
+{
+case $1 in
+2)
+ladder=23
+return $ladder
+;;
+
+7)
+ladder=29
+return $ladder
+;;
+
+22)
+ladder=41
+return $ladder
+;;
+
+28)
+ladder=77
+return $ladder
+;;
+
+30)
+ladder=44
+return $ladder
+;;
+
+70)
+ladder=90
+return $ladder
+;;
+
+87)
+ladder=93
+return $ladder
+;;
+
+*)
+ladder=0
+return $ladder
+;;
+}
+

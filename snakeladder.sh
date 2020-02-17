@@ -1,4 +1,4 @@
-declare -a  GameBoard[10,10]
+declare -A  GameBoard[10,10]
 initializeGameBoard()
 {
 size=100

@@ -143,10 +143,10 @@ playGame(){
 	then
 	
 		rollDice
-		play1=$?
+		number=$?
 		count1=$(( $count1+1 ))
 		echo "$count1 time roll the die to get the $play1"
-		playerOne=$(( $playerOne+$play1 ))
+		playerOne=$(( $playerOne+$number ))
 	
 			Ladder
 			ladder1=$?
@@ -167,7 +167,7 @@ playGame(){
 			fi
 		if(( $playerOne>100 ))
 		then
-			playerOne=$(( $playerOne-$play1 ))
+			playerOne=$(( $playerOne-$number ))
 			echo "First Player score is $playerOne "
 		else
 			echo "First player score is $playerOne "
@@ -184,10 +184,10 @@ playGame(){
 	if(( $playerChange==2 ))
 	then
 		rollDice
-		play2=$?
+		number=$?
 		count2=$(( $count2+1 ))
 		echo "$count2 time roll the die to get the $play2"
-		playerTwo=$(( $playerTwo+$play2 ))
+		playerTwo=$(( $playerTwo+$number ))
 			Ladder
 			ladder1=$?
 			if(( $ladder1 >= 1 ))
@@ -206,7 +206,7 @@ playGame(){
 			fi
 		if(( $playerTwo>100 ))
 		then
-			playerTwo=$(( $playerTwo-$play2 ))
+			playerTwo=$(( $playerTwo-$number ))
 			echo "Second Player score is $playerTwo "
 		else
 			echo "Second player score is $playerTwo "

@@ -1,3 +1,5 @@
+#!/bin/bash 
+declare -A GameBoard[10,10]
 initializeGameBoard()
 {
 size=100
@@ -19,7 +21,7 @@ done
 fi
 done
 }
-
+initializeGameBoard
 printGameBoard()
 {
 echo ========================================
@@ -27,14 +29,14 @@ for((i=1;i<=10;i++))
 do
 for((j=1;j<=10;j++))
 do
-printf "| ${GameBoard[$i,$j]}"
+echo -e  "| ${GameBoard[$i,$j]} \c"
 done
 echo "|"
 echo ========================================
 
 done
 }
-
+printGameBoard
 function InitializePlayerPosition()
 {
 currentpositition=0
@@ -141,13 +143,13 @@ playGame(){
 	do
 	if(( $playerChange==1 ))
 	then
-	
+
 		rollDice
 		number=$?
 		count1=$(( $count1+1 ))
 		echo "$count1 time roll the die to get the $play1"
 		playerOne=$(( $playerOne+$number ))
-	
+
 			Ladder
 			ladder1=$?
 			if(($ladder1>=1))
@@ -156,7 +158,7 @@ playGame(){
 				playerOne=$(( $playerOne+$ladder1 ))
 				echo "++> with help of ladder hike $ladder1 "
 			fi
-	
+
 			Snake
 			snake1=$?
 			if(( $snake1 >= 1 ))
@@ -172,7 +174,7 @@ playGame(){
 		else
 			echo "First player score is $playerOne "
 		fi
-	
+
 		if(( $playerOne == 100 ))
 		then
 			echo "first player has won
@@ -211,7 +213,7 @@ playGame(){
 		else
 			echo "Second player score is $playerTwo "
 		fi
-	
+
 		if(( $playerTwo == 100 ))
 		then
 			echo "second player has won "

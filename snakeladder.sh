@@ -43,11 +43,9 @@ return $currentposition
 
 
 rollDice(){
-while(( playerPossition<100 ))
-do
 diceNumber=$(( $(( $RANDOM%6 ))+1 ))
-playerPossition=$(( $playerPossition+$diceNumber ))
-done
+return $diceNumber
+
 }
 
 Ladder()
@@ -144,7 +142,8 @@ playGame(){
 	if(( $playerChange==1 ))
 	then
 	
-		play1=$(( $(( $RANDOM%6 ))+1 ))
+		rollDice
+		play1=$?
 		count1=$(( $count1+1 ))
 		echo "$count1 time roll the die to get the $play1"
 		playerOne=$(( $playerOne+$play1 ))
@@ -184,8 +183,8 @@ playGame(){
 	fi
 	if(( $playerChange==2 ))
 	then
-	
-		play2=$(( $(( $RANDOM%6 ))+1 ))
+		rollDice
+		play2=$?
 		count2=$(( $count2+1 ))
 		echo "$count2 time roll the die to get the $play2"
 		playerTwo=$(( $playerTwo+$play2 ))

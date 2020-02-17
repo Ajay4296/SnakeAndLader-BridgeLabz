@@ -92,5 +92,44 @@ return $ladder
 ladder=0
 return $ladder
 ;;
+
+esac
+}
+
+Snake()
+{
+case in $?
+27)
+snake=7
+return $snake
+;;
+
+39)
+snake=3
+return $snake
+;;
+
+50)
+snake=34
+return $snake
+;;
+
+66)
+snake=24
+return $snake
+;;
+
+73)
+snake=12
+return $snake
+;;
+
+99)
+snake=26
+return
+72
+;;
+
+esac
 }
 
